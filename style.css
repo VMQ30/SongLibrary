@@ -17,7 +17,7 @@ header{
 }
 
 body{
-    padding: 10px 20px;
+    padding: 10px 50px;
 }
 
 .logo{
@@ -27,8 +27,14 @@ body{
     background: #8E01F2;
     background: linear-gradient(140deg, #8E01F2,#8E01F2, #FF01D3);
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.genre-filter{
+    margin-bottom: 10px;
+}
 button{
     border-radius: 100px;
     padding: 7px 15px;
@@ -36,17 +42,76 @@ button{
     background-color: #1f242a;
     color:#a4a8b6;
     font-weight: 700;
+    box-shadow: -3px -2px 4px #373f48,
+                3px 3px 4px #040506;
+    cursor: pointer;
+    margin: 5px;
 }
 
 input{
     background-color: #1f242a;
     border:none;
     color:#6a6f7f;
+    padding: 10px;
+    width: 30vw;
+    border-radius: 7px;
+    margin-right: 10px;
+    box-shadow: inset 5px 5px 10px  #181b20,
+                inset -5px -5px 10px #2a3038,
+                5px 10px 7px #050607;
+    margin-bottom: 20px;
+    outline: 2px solid;
+    outline-color: #262c32;
+}
+
+input:focus{
+    outline: 2px solid;
+    outline-color: #8E01F2;
 }
 
 input::placeholder{
     color:#6a6f7f;
 }
+
 p{
     color:#6a6f7f;
+}
+
+.music-library{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    gap: 20px;
+}
+
+.music{
+    display: flex;
+    border-radius: 7px;
+    padding: 15px;
+    background-color: #1f242a;
+    box-shadow: inset 5px 5px 10px  #181b20,
+                inset -5px -5px 10px #2a3038;
+    outline: 2px solid;
+    outline-color: #262c32;
+    justify-content: space-between;
+    align-items: start;
+    transition: ease-in-out 0.3s;
+}
+
+.song-genre{
+    background-color: #8E01F2;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.music:hover{
+    transform: scale(1.05);
+    box-shadow: inset 5px 5px 10px  #181b20,
+                inset -5px -5px 10px #2a3038,
+                0 0 10px #FF01D3;
+}
+
+::selection{
+    background-color: #FF01D3;
+    color: white;
 }
