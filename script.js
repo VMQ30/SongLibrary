@@ -2,6 +2,7 @@
     updateSongList()
     filterSongsByTitle()
     filterSongByArtist()
+    addGenreButton()
 })()
 
 function setSongList(){
@@ -81,4 +82,23 @@ function filterSongByArtist(){
     const search = document.querySelector('.search-artist')
     const applyFilter = '.song-singer'
     filter(search, applyFilter)
+}
+
+function addGenreButton(){
+    const songs = document.querySelectorAll('.music')
+    const genreList = document.querySelector('.genre-filter')
+    let genres = []
+    
+    songs.forEach((song) => {
+        const genreText = song.querySelector('.song-genre').textContent
+        if(!genres.includes(genreText)){
+            genres.push(genreText)
+        }
+    })
+
+    genres.forEach((genre) => {
+        const button = document.createElement('button')
+        button.textContent = genre
+        genreList.appendChild(button)
+    })
 }
