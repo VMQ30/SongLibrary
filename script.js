@@ -1,6 +1,7 @@
 (function(){
     updateSongList()
     filterSongsByTitle()
+    filterSongByArtist()
 })()
 
 function setSongList(){
@@ -53,21 +54,31 @@ function updateSongList(){
     })
 }
 
-function filterSongsByTitle(){
-    const search = document.querySelector('.search-title')
+function filter(search, applyFilter){
     search.addEventListener('input', () => {
-        const searchText = search.value.toLowerCase().trim()
-        const songCard = document.querySelectorAll('.music')
+        const searchText = search.value.trim().toLowerCase()
+        const songCards = document.querySelectorAll('.music')
 
-        songCard.forEach((song) => {
-            let title = song.querySelector('.music-title').textContent.toLowerCase()
-            if(title.includes(searchText)){
+        songCards.forEach((song) => {
+            let filterText = song.querySelector(applyFilter).textContent.trim().toLowerCase()
+            if(filterText.includes(searchText)){
                 song.style.display = 'flex'
             }
             else{
                 song.style.display = 'none'
             }
-
         })
     })
+}
+
+function filterSongsByTitle(){
+    const search = document.querySelector('.search-title')
+    const applyFilter = '.music-title'
+    filter(search, applyFilter)
+}
+
+function filterSongByArtist(){
+    const search = document.querySelector('.search-artist')
+    const applyFilter = '.song-singer'
+    filter(search, applyFilter)
 }
