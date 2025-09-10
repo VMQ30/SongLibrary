@@ -4,20 +4,21 @@
     filterSongsByTitle()
     filterSongByArtist()
     filterSongsByGenre()
+    filterSongsByGenreSearch()
 })()
 
 function setSongList(){
     const defaultSongs = [
-        { title: "Shape of You", artist: "Ed Sheeran", genre: "Pop", dateReleased: "06-01-2017" },
-        { title: "Blinding Lights", artist: "The Weeknd", genre: "Synthetic Pop", dateReleased: "29-11-2019" },
-        { title: "Rolling in the Deep", artist: "Adele", genre: "Soul", dateReleased: "29-11-2010" },
-        { title: "Bohemian Rhapsody", artist: "Queen", genre: "Rock", dateReleased: "31-10-1975" },
-        { title: "Bad Guy", artist: "Billie Eilish", genre: "Pop", dateReleased: "29-03-2019" },
-        { title: "Hotel California", artist: "Eagles", genre: "Rock", dateReleased: "08-12-1976" },
-        { title: "Someone Like You", artist: "Adele", genre: "Ballad", dateReleased: "24-01-2011" },
-        { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge", dateReleased: "10-09-1991" },
-        { title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", genre: "Funk", dateReleased: "10-11-2014" },
-        { title: "Shake It Off", artist: "Taylor Swift", genre: "Pop", dateReleased: "18-08-2014" }
+        { title: "Shape of You", artist: "Ed Sheeran", genre: "Pop", dateReleased: "06-01-2017", duration: "3:53" },
+        { title: "Blinding Lights", artist: "The Weeknd", genre: "Synthetic Pop", dateReleased: "29-11-2019", duration: "3:20" },
+        { title: "Rolling in the Deep", artist: "Adele", genre: "Soul", dateReleased: "29-11-2010", duration: "3:48" },
+        { title: "Bohemian Rhapsody", artist: "Queen", genre: "Rock", dateReleased: "31-10-1975", duration: "5:55" },
+        { title: "Bad Guy", artist: "Billie Eilish", genre: "Pop", dateReleased: "29-03-2019", duration: "3:14" },
+        { title: "Hotel California", artist: "Eagles", genre: "Rock", dateReleased: "08-12-1976", duration: "6:30" },
+        { title: "Someone Like You", artist: "Adele", genre: "Ballad", dateReleased: "24-01-2011", duration: "4:45" },
+        { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge", dateReleased: "10-09-1991", duration: "5:01" },
+        { title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", genre: "Funk", dateReleased: "10-11-2014", duration: "4:30" },
+        { title: "Shake It Off", artist: "Taylor Swift", genre: "Pop", dateReleased: "18-08-2014", duration: "3:39" }
     ]
 
     let songList = JSON.parse(localStorage.getItem('songList')) || defaultSongs
@@ -39,6 +40,7 @@ function updateSongList(){
         let artist = song.artist
         let genre = song.genre
         let dateReleased = song.dateReleased
+        let duration = song.duration
 
         let music = document.createElement('div')
         music.classList.add('music')
@@ -46,7 +48,7 @@ function updateSongList(){
         <div class = 'song-details'>
             <h2 class = 'music-title'>${title}</h2>
             <p class = 'song-singer'>${artist}</p>
-            <p class = 'song-duration'>${genre}</p>
+            <p class = 'song-duration'>${duration}</p>
             <p class = 'song-release'>${dateReleased}</p>
         </div>
         <div class = 'song-genre'>${genre}</div>
@@ -85,6 +87,12 @@ function filterSongByArtist(){
     filter(search, applyFilter)
 }
 
+function filterSongsByGenreSearch(){
+    const search = document.querySelector('.search-genre')
+    const applyFilter = '.song-genre'
+    filter(search, applyFilter)
+}
+
 function addGenreButton(){
     const songs = document.querySelectorAll('.music')
     const genreList = document.querySelector('.genre-filter')
@@ -113,7 +121,7 @@ function filterSongsByGenre(){
         genre.addEventListener('click', () => {
             songCards.forEach((song) => {
                 let filterText = song.querySelector('.song-genre').textContent.trim().toLowerCase()
-                if(filterText.includes(genre.textContent.toLowerCase())){
+                if(filterText == (genre.textContent.toLowerCase())){
                     song.style.display = 'flex'
                 }
                 else{
