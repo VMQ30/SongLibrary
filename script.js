@@ -119,6 +119,7 @@ function filterSongsByGenre(){
 
     genres.forEach((genre) => {
         genre.addEventListener('click', () => {
+            clickButtonStyle(genre)
             songCards.forEach((song) => {
                 let filterText = song.querySelector('.song-genre').textContent.trim().toLowerCase()
                 if(filterText == (genre.textContent.toLowerCase())){
@@ -136,5 +137,18 @@ function filterSongsByGenre(){
         songCards.forEach((song) => {
             song.style.display = 'flex'
         })
+        clickButtonStyle(allGenre)
     })
+}
+
+function clickButtonStyle(button){
+    const buttons = document.querySelectorAll('.genre')
+    const allGenre = document.querySelector('.all-genre')
+
+    allGenre.classList.remove('pressed')
+    buttons.forEach((button) => {
+        button.classList.remove('pressed')
+    })
+
+    button.classList.add('pressed')
 }
