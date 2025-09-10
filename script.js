@@ -1,8 +1,9 @@
 (function(){
     updateSongList()
+    addGenreButton()
     filterSongsByTitle()
     filterSongByArtist()
-    addGenreButton()
+    filterSongsByGenre()
 })()
 
 function setSongList(){
@@ -99,6 +100,33 @@ function addGenreButton(){
     genres.forEach((genre) => {
         const button = document.createElement('button')
         button.textContent = genre
+        button.classList.add('genre')
         genreList.appendChild(button)
+    })
+}
+
+function filterSongsByGenre(){
+    const genres = document.querySelectorAll('.genre')
+    const songCards = document.querySelectorAll('.music')
+
+    genres.forEach((genre) => {
+        genre.addEventListener('click', () => {
+            songCards.forEach((song) => {
+                let filterText = song.querySelector('.song-genre').textContent.trim().toLowerCase()
+                if(filterText.includes(genre.textContent.toLowerCase())){
+                    song.style.display = 'flex'
+                }
+                else{
+                    song.style.display = 'none'
+                }
+            })
+        })
+    })
+
+    const allGenre = document.querySelector('.all-genre')
+    allGenre.addEventListener('click', () => {
+        songCards.forEach((song) => {
+            song.style.display = 'flex'
+        })
     })
 }
