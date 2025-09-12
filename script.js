@@ -59,20 +59,30 @@ function updateSongList(){
 }
 
 function filter(search, applyFilter){
+    const noSongsMessage = document.querySelector('.no-songs')
     search.addEventListener('input', () => {
+        let visibleSongs = 0;
         const searchText = search.value.trim().toLowerCase()
         const songCards = document.querySelectorAll('.music')
+
+        noSongsMessage.style.display = 'none'
 
         songCards.forEach((song) => {
             let filterText = song.querySelector(applyFilter).textContent.trim().toLowerCase()
             if(filterText.includes(searchText)){
                 song.style.display = 'flex'
+                visibleSongs++
             }
             else{
                 song.style.display = 'none'
             }
         })
+
+        if(visibleSongs === 0){
+            noSongsMessage.style.display = 'block'
+        }
     })
+
 }
 
 function filterSongsByTitle(){

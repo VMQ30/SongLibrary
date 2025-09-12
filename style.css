@@ -64,7 +64,7 @@ input{
     border:none;
     color:#6a6f7f;
     padding: 10px;
-    width: 30vw;
+    width: 29vw;
     border-radius: 7px;
     margin-right: 10px;
     box-shadow: inset 5px 5px 10px  #181b20,
@@ -115,6 +115,14 @@ p{
     padding: 5px 10px;
     border-radius: 10px;
     margin-left: 10px;
+}
+
+.no-songs{
+    display: none;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: -3px 3px 0px #FF01D3;
+    margin-top: 50px;
 }
 
 .music:hover{
