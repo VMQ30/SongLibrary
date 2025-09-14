@@ -1,37 +1,30 @@
 (function(){
-    updateSongList()
-    addGenreButton()
-    filterSongsByTitle()
-    filterSongByArtist()
-    filterSongsByGenre()
-    filterSongsByGenreSearch()
+    loadSongs(function(songList){
+        updateSongList(songList)
+        addGenreButton()
+        filterSongsByTitle()
+        filterSongByArtist()
+        filterSongsByGenre()
+        filterSongsByGenreSearch()
+    })
 })()
 
-function setSongList(){
-    const defaultSongs = [
-        { title: "Shape of You", artist: "Ed Sheeran", genre: "Pop", dateReleased: "06-01-2017", duration: "3:53" },
-        { title: "Blinding Lights", artist: "The Weeknd", genre: "Synthetic Pop", dateReleased: "29-11-2019", duration: "3:20" },
-        { title: "Rolling in the Deep", artist: "Adele", genre: "Soul", dateReleased: "29-11-2010", duration: "3:48" },
-        { title: "Bohemian Rhapsody", artist: "Queen", genre: "Rock", dateReleased: "31-10-1975", duration: "5:55" },
-        { title: "Bad Guy", artist: "Billie Eilish", genre: "Pop", dateReleased: "29-03-2019", duration: "3:14" },
-        { title: "Hotel California", artist: "Eagles", genre: "Rock", dateReleased: "08-12-1976", duration: "6:30" },
-        { title: "Someone Like You", artist: "Adele", genre: "Ballad", dateReleased: "24-01-2011", duration: "4:45" },
-        { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge", dateReleased: "10-09-1991", duration: "5:01" },
-        { title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", genre: "Funk", dateReleased: "10-11-2014", duration: "4:30" },
-        { title: "Shake It Off", artist: "Taylor Swift", genre: "Pop", dateReleased: "18-08-2014", duration: "3:39" }
-    ]
-
-    let songList = JSON.parse(localStorage.getItem('songList')) || defaultSongs
-
-    if(!localStorage.getItem('songList')){
-        localStorage.setItem('songList', JSON.stringify(songList))
+function loadSongs(callback){
+    let request = new XMLHttpRequest()
+    request.open('GET', 'songlist.json')
+    request.responseType = 'json'
+    request.onload = function(){
+        if(request.status === 200){
+            callback(request.response.songs)
+        }
+        else{
+            console.error('Failed to load songs')
+        }
     }
-
-    return songList
+    request.send()
 }
 
-function updateSongList(){
-    const songList = setSongList()
+function updateSongList(songList){
     const grid = document.querySelector(".music-library")
     grid.innerHTML = ''
 
@@ -81,6 +74,14 @@ function filter(search, applyFilter){
         if(visibleSongs === 0){
             noSongsMessage.style.display = 'block'
         }
+
+        const allGenre = document.querySelector('.all-genre')
+        allGenre.classList.add('pressed')
+
+        const genres = document.querySelectorAll('.genre')
+        genres.forEach((genre) => {
+            genre.classList.remove('pressed')
+        })
     })
 
 }
@@ -138,6 +139,9 @@ function filterSongsByGenre(){
                 else{
                     song.style.display = 'none'
                 }
+
+                const noSongsMessage = document.querySelector('.no-songs')
+                noSongsMessage.style.display = 'none'
             })
         })
     })
@@ -149,6 +153,7 @@ function filterSongsByGenre(){
         })
         clickButtonStyle(allGenre)
     })
+
 }
 
 function clickButtonStyle(button){

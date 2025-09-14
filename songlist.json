@@ -1,62 +1,14 @@
-[
-  {
-    "title": "Shape of You",
-    "artist": "Ed Sheeran",
-    "genre": "Pop",
-    "dateReleased": "06-01-2017"
-  },
-  {
-    "title": "Blinding Lights",
-    "artist": "The Weeknd",
-    "genre": "Synthetic Pop",
-    "dateReleased": "29-11-2019"
-  },
-  {
-    "title": "Rolling in the Deep",
-    "artist": "Adele",
-    "genre": "Soul",
-    "dateReleased": "29-11-2010"
-  },
-  {
-    "title": "Bohemian Rhapsody",
-    "artist": "Queen",
-    "genre": "Rock",
-    "dateReleased": "31-10-1975"
-  },
-  {
-    "title": "Bad Guy",
-    "artist": "Billie Eilish",
-    "genre": "Pop",
-    "dateReleased": "29-03-2019"
-  },
-  {
-    "title": "Hotel California",
-    "artist": "Eagles",
-    "genre": "Rock",
-    "dateReleased": "08-12-1976"
-  },
-  {
-    "title": "Someone Like You",
-    "artist": "Adele",
-    "genre": "Ballad",
-    "dateReleased": "24-01-2011"
-  },
-  {
-    "title": "Smells Like Teen Spirit",
-    "artist": "Nirvana",
-    "genre": "Grunge",
-    "dateReleased": "10-09-1991"
-  },
-  {
-    "title": "Uptown Funk",
-    "artist": "Mark Ronson ft. Bruno Mars",
-    "genre": "Funk",
-    "dateReleased": "10-11-2014"
-  },
-  {
-    "title": "Shake It Off",
-    "artist": "Taylor Swift",
-    "genre": "Pop",
-    "dateReleased": "18-08-2014"
-  }
-]
+{
+  "songs": [
+    { "title": "Shape of You", "artist": "Ed Sheeran", "genre": "Pop", "dateReleased": "2017-01-06", "duration": "3:53" },
+    { "title": "Blinding Lights", "artist": "The Weeknd", "genre": "Synthetic Pop", "dateReleased": "2019-11-29", "duration": "3:20" },
+    { "title": "Rolling in the Deep", "artist": "Adele", "genre": "Soul", "dateReleased": "2010-11-29", "duration": "3:48" },
+    { "title": "Bohemian Rhapsody", "artist": "Queen", "genre": "Rock", "dateReleased": "1975-10-31", "duration": "5:55" },
+    { "title": "Bad Guy", "artist": "Billie Eilish", "genre": "Pop", "dateReleased": "2019-03-29", "duration": "3:14" },
+    { "title": "Hotel California", "artist": "Eagles", "genre": "Rock", "dateReleased": "1976-12-08", "duration": "6:30" },
+    { "title": "Someone Like You", "artist": "Adele", "genre": "Ballad", "dateReleased": "2011-01-24", "duration": "4:45" },
+    { "title": "Smells Like Teen Spirit", "artist": "Nirvana", "genre": "Grunge", "dateReleased": "1991-09-10", "duration": "5:01" },
+    { "title": "Uptown Funk", "artist": "Mark Ronson ft. Bruno Mars", "genre": "Funk", "dateReleased": "2014-11-10", "duration": "4:30" },
+    { "title": "Shake It Off", "artist": "Taylor Swift", "genre": "Pop", "dateReleased": "2014-08-18", "duration": "3:39" }
+  ]
+}

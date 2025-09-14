@@ -2,12 +2,14 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+    
 }
 
 html{
     background-color:#101114;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+    overflow-y: auto;
 }
 
 header{
@@ -18,6 +20,7 @@ header{
 
 body{
     padding: 10px 50px;
+    overflow: hidden;
 }
 
 .logo{
@@ -59,14 +62,18 @@ button:hover{
     color:white;
 }
 
+.search-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
 input{
     background-color: #1f242a;
     border:none;
     color:#6a6f7f;
     padding: 10px;
-    width: 29vw;
+    width: 1fr;
     border-radius: 7px;
-    margin-right: 10px;
     box-shadow: inset 5px 5px 10px  #181b20,
                 inset -5px -5px 10px #2a3038,
                 5px 10px 7px #050607;
@@ -91,8 +98,9 @@ p{
 
 .music-library{
     margin-top: 20px;
+    margin-bottom: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 20vw));
+    grid-template-columns: repeat(4, minmax(21.5vw, 1fr));
     gap: 20px;
 }
 
@@ -108,6 +116,7 @@ p{
     justify-content: space-between;
     align-items: start;
     transition: ease-in-out 0.3s;
+    height: 10vw;
 }
 
 .song-genre{
@@ -135,4 +144,22 @@ p{
 ::selection{
     background-color: #FF01D3;
     color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(255, 255, 255); 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #2a3038;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8E01F2 
 }
